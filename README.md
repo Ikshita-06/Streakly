@@ -65,5 +65,11 @@ The app ensures streak integrity through a two-step verification process:
     ```
 
 ---
+## Screenshots
+![1](https://github.com/user-attachments/assets/5f0c9f7d-87d5-4c4d-a082-db603746d742)
+![3](https://github.com/user-attachments/assets/dc9edc2f-b713-4391-8e03-d4cfa534d617)
+![2](https://github.com/user-attachments/assets/d4d21ffb-21bd-40ec-aaf9-383aa6fdb973)
 
+
+---
 **Built by Ikshita Sharma**
