@@ -1,75 +1,94 @@
-# 🔥 Streakly
+# Streakly
 
-**Streakly** is a full-stack mobile application designed to help users build and maintain consistent daily habits. Built with **Flutter** for the frontend and **Supabase** for the backend, it features a robust streak calculation algorithm, secure authentication, and a modern, responsive UI.
+Streakly is a habit-tracking mobile application built with **Flutter** and **Supabase**, designed to help users build consistent daily routines. It combines secure authentication, automated streak tracking, and a responsive interface to make habit tracking simple and engaging.
 
----
 ## Features
 
-### Core Functionality
-* **Habit Management:** Users can create, view, and delete habits effortlessly.
-* **Smart Streak Tracking:**
-    * **Real-time Updates:** Instantly updates "Current Streak" and "Longest Streak" upon completion.
-    * **Auto-Reset Logic:** A dedicated algorithm runs on app launch to detect missed days. If a user fails to log a habit yesterday, their streak automatically resets to 0.
-* **Daily Logging:** Prevents multiple logs for the same habit on the same day using unique database constraints.
+### Habit Management
+- Create, view, and delete daily habits.
+- Log habit completions and track daily progress.
+- Prevent duplicate completion logs for the same habit on a given day using database constraints.
 
-### UI/UX
-* **Dynamic Theme Switching:** Toggle between Dark Mode and Light Mode with state persistence.
-* **Interactive Feedback:** Fire icons change color to represent intensity (Orange for short streaks, Deep Orange for streaks over 5 days).
-* **Responsive Layouts:** Handles text wrapping and screen overflow gracefully.
-* **User Feedback:** Snackbars for errors and confirmation dialogs for critical actions like deletion.
+### Streak Tracking
+- Automatically calculates current and longest streaks.
+- Updates streaks when a habit is completed.
+- Detects missed days and resets broken streaks.
+- Uses date-based checks to maintain streak consistency.
 
-### Backend & Security
-* **Supabase Authentication:** Secure Email/Password signup and login.
-* **Row Level Security (RLS):** Database policies ensure users can *only* access and modify their own data.
+### User Interface
+- Light and dark theme with persistent preferences.
+- Interactive streak indicators with dynamic fire icons.
+- Responsive layouts with text-overflow handling.
+- Snackbars for feedback and confirmation dialogs for important actions.
 
----
+### Authentication & Security
+- Email/password authentication using Supabase.
+- PostgreSQL database for storing user and habit data.
+- Row Level Security (RLS) policies to restrict users to their own data.
 
 ## Tech Stack
 
-* **Frontend:** Flutter (Dart)
-* **Backend:** Supabase (PostgreSQL, Auth)
-* **State Management:** Provider
-* **Database Security:** Row Level Security (RLS)
+| Category | Technologies |
+|---|---|
+| Frontend | Flutter, Dart |
+| Backend | Supabase |
+| Database | PostgreSQL |
+| Authentication | Supabase Auth |
+| State Management | Provider |
+| Database Security | Row Level Security (RLS) |
 
----
+## How Streak Tracking Works
 
-## The "Streak" Algorithm
+Streakly uses date-based checks to maintain accurate habit streaks:
 
-The app ensures streak integrity through a two-step verification process:
-
-1.  **On App Load (The Daily Check):**
-    The app queries the database for the last completed date of every habit. If the last log was not **today** or **yesterday**, the streak is considered broken and automatically resets to 0.
-
-2.  **On Completion:**
-    When a habit is marked as done, the system checks if a log exists for **yesterday**.
-    * **If Yes:** The streak increments (+1).
-    * **If No:** The streak starts fresh at 1.
-
----
+1. **Daily validation:** On app launch, the app checks the latest completion date for each habit. A streak is reset if the user has missed the previous day.
+2. **Habit completion:** When a habit is completed, the app checks whether it was also completed yesterday.
+   - If yes, the current streak increases by one.
+   - If not, a new streak starts at one.
+3. **Longest streak:** The longest streak is maintained separately to preserve the user's best progress.
 
 ## Getting Started
 
-1.  **Clone the repo:**
-    ```bash
-    git clone https://github.com/Ikshita-06/streakly.git
-    ```
-2.  **Install dependencies:**
-    ```bash
-    flutter pub get
-    ```
-3.  **Setup Supabase:**
-    Add your `url` and `anonKey` in `lib/main.dart`.
-4.  **Run the app:**
-    ```bash
-    flutter run
-    ```
+### Prerequisites
+- Flutter SDK
+- Dart SDK
+- A Supabase project
 
----
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Ikshita-06/streakly.git
+   cd streakly
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Configure Supabase:
+
+   Add your Supabase project URL and anon key in `lib/main.dart`.
+
+4. Run the application:
+
+   ```bash
+   flutter run
+   ```
+
 ## Screenshots
-![1](https://github.com/user-attachments/assets/5f0c9f7d-87d5-4c4d-a082-db603746d742)
-![3](https://github.com/user-attachments/assets/dc9edc2f-b713-4391-8e03-d4cfa534d617)
-![2](https://github.com/user-attachments/assets/d4d21ffb-21bd-40ec-aaf9-383aa6fdb973)
 
+![Streakly Screenshot 1](https://github.com/user-attachments/assets/5f0c9f7d-87d5-4c4d-a082-db603746d742)
+
+![Streakly Screenshot 2](https://github.com/user-attachments/assets/d4d21ffb-21bd-40ec-aaf9-383aa6fdb973)
+
+![Streakly Screenshot 3](https://github.com/user-attachments/assets/dc9edc2f-b713-4391-8e03-d4cfa534d617)
 
 ---
+
 **Built by Ikshita Sharma**
+
+---
